@@ -72,17 +72,15 @@ export async function verifyOtp(req: AuthRequest, res: Response) {
                     message: "Error generating token"
                 });
             }
-            let isCookieSet = false;
 
 
             res.cookie("token", token, {
                httpOnly: true,
-  secure: false,
-  sameSite: "lax",
+  secure: true,
+  sameSite: "none",
   maxAge: 7 * 24 * 60 * 60 * 1000
             });
 
-            console.log("Cookie set: ", res);
 
             return res.status(200).json({
                 success: true,
