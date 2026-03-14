@@ -16,7 +16,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin: '*',
+    origin: env.NEXT_BASE_URL,
     credentials: true
   }
 ))
